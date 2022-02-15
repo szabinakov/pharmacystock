@@ -1,4 +1,4 @@
-const {addMedication} = require("../src/formulary");
+import addMedication from "../src/formulary";
 
 describe('addMedication function', () => { 
     it('Adds medication to the formulary, medication is on medications list, and it is not added to formulary yet', () => {
@@ -6,10 +6,18 @@ describe('addMedication function', () => {
         const secondDose = ["Amoxicillin"]
         const thirdDose = ["Codeine", "Diclofenac", "Simvastatin", "Tramadol"]
 
-        addMedication(firstDose)
         expect(addMedication(firstDose)).toEqual(["Paracetamol", "Ibuprofen"])
         addMedication(secondDose)
-        addMedication(thirdDose)
         expect(addMedication(thirdDose)).toEqual(["Paracetamol", "Ibuprofen","Amoxicillin", "Codeine", "Diclofenac", "Simvastatin", "Tramadol" ])
+    })
+    it('Throws error when medication is already in the formulary', () => {
+        const secondDose = ["Paracetamol"]
+        expect(()=>addMedication(secondDose)).toThrowError("Medicine you are trying to add is already in the formulary!")
+    })
+
+    it('Throws error when medication is not included on medications list', () => {
+        const firstDose = ["XZY"]
+        
+        expect(()=>addMedication(firstDose)).toThrow("Medicine you are trying to add is not on the medication list!")
     })
 })
