@@ -14,7 +14,16 @@ function addMedication(medicine){
             }
         }
     })
-    return formulary
+    console.log(formulary)
 }
+
+const firstDose = ["Paracetamol", "Ibuprofen"]
+const secondDoce = ["Amoxicillin"]
+const thirdDose = ["Codeine", "Diclofenac", "Simvastatin", "Tramadol"]
+
+addMedication(firstDose)
+addMedication(secondDoce)
+addMedication(thirdDose)
+
 
 export default addMedication
