@@ -31,10 +31,15 @@ describe("createInventory function", ()=> {
         expect(item.packsize).toEqual(50)
         expect(item.total).toEqual(100)
     })
-    xit("throws error when medicine is not on formulary list", ()=> {
+    xit("Throws error when medicine is not on formulary list", ()=> {
         const item = new Item("XYZ", "500mg", 50, 100 )
         
         expect(()=>createInventory(item)).toThrow("Medication you are trying to add is not on formulary list!")
 
+    })
+    xit("Throws error when medication is not included on medications list", ()=> {
+        const item = new Item("XYZ", "500mg", 50, 100 )
+        
+        expect(()=>createInventory(item)).toThrow("Medicine you are trying to add is not on medications list!")
     })
 })
