@@ -40,24 +40,30 @@ const firstDose = ["Paracetamol", "Ibuprofen"]
 const secondDoce = ["Amoxicillin"]
 const thirdDose = ["Codeine", "Diclofenac", "Simvastatin", "Tramadol"]
 
-// calling addMed function to create the formulary  - to run tests please comment out
+// calling addMedication function to create the formulary  - to run tests please comment out
 addMedication(firstDose)
 addMedication(secondDoce)
 addMedication(thirdDose)
 
 
-// Function to create inventory, 
+// Function to create inventory
 export function createInventory(item){
-    // Checks if the medication which we are trying to add is in the formulary or not
-    if(!formulary.includes(item.name)){
-        // med is not in the formulary thros error
-        throw new Error ("Medication you are trying to add is not on formulary list!")
+    // if medication is not on meds list throw error
+    if(!medications.includes(item.name)) {
+        throw new Error("Medicine you are trying to add is not on medications list!")
     } else {
-        // med is included in the formulary than adds med and details to the inventory list
-        inventory.push(item)
+        // Checks if the medication which we are trying to add is in the formulary or not
+        if(!formulary.includes(item.name)){
+            // med is not in the formulary throws error
+            throw new Error ("Medication you are trying to add is not on formulary list!")
+        } else {
+            // med is included in the formulary than adds med and details to the inventory list
+            inventory.push(item)
+        }
     }
+
     // logs inventory to console
-    // console.log(inventory)
+    console.log(inventory)
     // returns inventory 
     return inventory
 }
